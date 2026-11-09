@@ -1,0 +1,15 @@
+cd "C:\Program Files\Oracle\VirtualBox\"
+
+VBoxManage.exe modifyvm "Machine" --cpuidset 00000001 000306a9 04100800 7fbae3ff bfebfbff
+
+VBoxManage setextradata "Machine" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "UseARealMacIdentifier"
+
+VBoxManage setextradata "Machine" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+
+VBoxManage setextradata "Machine" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+
+VBoxManage setextradata "Machine" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+
+VBoxManage setextradata "Machine" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+
+VBoxManage setextradata "(Machine Name)" VBoxInternal2/EfiGraphicsResolution 1280x720
