@@ -1,0 +1,143 @@
+CD C:\Program files\Qemu
+
+
+Create HDD Image------
+
+
+IMG Format>
+
+qemu-img create -f qcow2 (harddiskimagelocation).img 10G
+
+
+Enter Setup----------------
+
+
+qemu-system-ppc -L pc-bios -boot d -M mac99 -m 2048 -hda (harddiskimagelocation) -cdrom (ISOlocation)
+
+
+Go TO Disk 2--------------
+
+
+qemu-system-ppc -L pc-bios -boot c -M mac99 -m 2048 -hda (harddiskimagelocation) -cdrom (ISOlocation)
+
+
+Start Mac OS--------------
+
+
+qemu-system-ppc -L pc-bios -boot c -M mac99 -m 2048 -hda (harddiskimagelocation)
+
+
+Mac OS 9x--------------------------------------------
+
+
+Enter Setup
+
+qemu-system-ppc -L pc-bios -boot d -M mac99 -m 1024 -hda (harddiskimagelocation) -cdrom (ISOlocation)
+
+
+Start Mac OS
+
+qemu-system-ppc -L pc-bios -boot c -M mac99 -m 1024 -hda (harddiskimagelocation)
+
+
+Super ppc for Mac OS X 10.5 Leopard------------
+
+
+Start setup--------------------------------------------
+
+
+qemu-system-ppc -L pc-bios -boot d -M mac99,via=pmu -m 2048 -prom-env "auto-boot?=true" -prom-env "boot=args=-V" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation) -drive file=(ISO location),format=raw,media=cdrom -sdl -netdev user,id=network01 -device sungem,netdev=network01 -device VGA,edid=on -g 1366x768x32
+
+
+Start from Hard disk---------------------------------
+
+
+qemu-system-ppc -L pc-bios -boot c -M mac99,via=pmu -m 2048 -prom-env "auto-boot?=true" -prom-env "boot=args=-V" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation) -netdev user,id=network01 -device sungem,netdev=network01 -device VGA,edid=on -g 1366x768x32
+
+
+Mac OS X DP2-------------
+
+
+Start Setup-----------------------------
+
+
+qemu-system-ppc -L pc-bios -m 256 -hda (harddiskimagelocation) -boot d -prom-env "boot-device=cd:9,\\:tbxi" -prom-env "auto-boot?=true" -M g3beige -cpu g3 -prom-env "boot-args=-v" -display sdl -device VGA,edid=on -g 1366x768x32 -cdrom (ISOlocation)
+
+
+Start from Hard Disk--------------------
+
+
+qemu-system-ppc -L pc-bios -m 256 -hda (harddiskimagelocation) -boot c -prom-env "boot-device=hd:9,\\:tbxi" -prom-env "auto-boot?=true" -M g3beige -cpu g3 -prom-env "boot-args=-v" -display sdl -device VGA,edid=on -g 1366x768x32
+
+
+Mac OS X DP3-------------
+
+
+Start Setup-----------------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot d -m 512 -M g3beige -cpu g3 -prom-env "boot-device=cd:9,\\:tbxi" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(ISOlocation),format=raw,media=cdrom -drive file=(harddiskimagelocation)
+
+
+Start from Hard Disk--------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot c -m 512 -M g3beige -cpu g3 -prom-env "boot-device=hd:9,\\:tbxi" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation)
+
+
+Mac OS X DP4-------------
+
+
+Start Setup-----------------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot d -m 512 -M g3beige -cpu g3 -prom-env "boot-device=cd:9,\\:tbxi" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation) -drive file=(ISOlocation),format=raw,media=cdrom -g 800x600x32 -display sdl
+
+
+Start from Hard Disk--------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot c -m 512 -M g3beige -cpu g3 -prom-env "boot-device=hd:9,\\:tbxi" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation) -g 800x600x32 -display sdl
+
+
+Mac OS X Public Beta-----
+
+
+Start Setup-----------------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot d -m 512 -M mac99 -prom-env "auto-boot?=true" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation),format=raw,media=disk -sdl -netdev user,id=network01 -device sungem,netdev=network01 -rtc base=2000-08-29 -drive file=(ISOlocation),format=raw,media=cdrom
+
+
+Start from Hard Disk--------------------
+
+
+qemu-system-ppc.exe -L pc-bios -boot c -m 512 -M mac99 -prom-env "auto-boot?=true" -prom-env "boot-args=-v" -prom-env "vga-ndrv?=true" -drive file=(harddiskimagelocation),format=raw,media=disk -sdl -netdev user,id=network01 -device sungem,netdev=network01 -rtc base=2000-08-29
+
+
+Works Mac OS Version -----
+
+Mac OS 9.1
+
+Mac OS 9.2
+
+Mac OS X Beta
+
+Mac OS X 10.0 Cheetah
+
+Mac OS X 10.1 Puma
+
+Mac OS X 10.2 Jaguar
+
+Mac OS X 10.3 Panther
+
+Mac OS X 10.4 Tiger
+
+Mac OS X 10.5 Leopard (last os to using on qemu)
+
+
+Note-----------------------------------------------------
+
+Don't use Mac OS X 10.4 tiger CDs if you use other languages. There is a DVD version exist.
+
+Mac OS X 10.5 Leopard need 5 to 6 hours to complete the setup!
